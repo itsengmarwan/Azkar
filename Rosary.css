@@ -1,4 +1,4 @@
-.container {
+  .container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -8,7 +8,7 @@
   }
   
   .header {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -16,6 +16,7 @@
     color: #d3a528;
     text-align: center;
     padding: 10px;
+    z-index: 1; /* أضف هذا للاحتفاظ بالرأس في الأعلى */
   }
   
   .counter {
@@ -44,8 +45,8 @@
     background-color: #32bc37;
     color: #fff;
     border-radius: 50%;
-    width: 120px;
-    height: 120px;
+    width: 150px;
+    height: 150px;
     font-size: 24px;
     display: flex;
     justify-content: center;
