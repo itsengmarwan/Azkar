@@ -31,6 +31,8 @@ body {
 .azkar-list {
     padding-top: 60px;
     text-align: center;
+    font-size: 20px;
+    margin: 20px;
 }
 
 #azkar-container {
@@ -157,8 +159,3 @@ body {
         width: 50%;
     }
 }
-
-
-
-
-
