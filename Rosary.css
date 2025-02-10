@@ -20,7 +20,7 @@
   }
   
   .counter {
-    font-size: 30px;
+    font-size: 35px;
     margin-bottom: 10px;
   }
   
@@ -75,7 +75,7 @@
       padding: 20px;
     }
     .counter {
-      font-size: 26px;
+      font-size: 30px;
     }
     .buttons {
       margin-top: 20px;
@@ -92,7 +92,7 @@
       padding: 10px;
     }
     .counter {
-      font-size: 20px;
+      font-size: 25px;
     }
     .buttons {
       margin-top: 10px;
