@@ -1,0 +1,125 @@
+body {
+    font-family: 'Aref Ruqaa', serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #000000ee;
+    color: #d3a528;
+    padding: 5px;
+    text-align: center;
+    z-index: 1;
+}
+
+.header-content {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 5px;
+}
+
+.header-title {
+    font-size: 30
+    px;
+    margin-bottom: 5px;
+}
+
+.content {
+    width: 97%;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #e4e4e4;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.links {
+    text-align: center;
+    margin-top: 10px;
+    
+}
+
+.links button {
+    width: 40%;
+    margin-bottom: 10px;
+}
+
+.button {
+    background-color: #000000ee;
+    color: #d3a528;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 10px;
+}
+
+.button:hover {
+    background-color: #000000;
+    transform: scale(1.1);
+}
+
+.button:active {
+    transform: scale(0.9);
+}
+
+.info {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.footer {
+    margin-top: 5px;
+    padding: 2px;
+    background-color: #000000ee;
+    color: #fff;
+    text-align: center;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .content {
+     width: 95%;
+     margin: 0 auto;
+     margin-top: 5px;
+     margin-bottom: 5px;
+
+    }
+    .links {
+        flex-direction: column;
+    }
+        links button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .content {
+        width: 95%;
+        margin: 0 auto;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+    .links {
+        flex-direction: column;
+    }
+    .links button {
+        width: 70%;
+        margin-bottom: 10px;
+    }
+}

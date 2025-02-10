@@ -1,0 +1,113 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #e4e4e4;
+  }
+  
+  .header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #000000ee;
+    color: #d3a528;
+    text-align: center;
+    padding: 10px;
+  }
+  
+  .counter {
+    font-size: 30px;
+    margin-bottom: 10px;
+  }
+  
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 0;
+  }
+  
+  button {
+    margin: 5px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .btn {
+    background-color: #32bc37;
+    color: #fff;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .reset-btn {
+    background-color: #FF0000;
+    color: #fff;
+  }
+  
+  .home-btn {
+    background-color: #000000ee;
+    color: #d3a528;
+  }
+  
+  button:hover {
+    opacity: 0.8;
+  }
+  
+  /* إضافة قواعد الوسائط */
+  
+  @media (max-width: 768px) {
+    .container {
+      height: 100vh;
+      padding: 20px;
+    }
+    .counter {
+      font-size: 26px;
+    }
+    .buttons {
+      margin-top: 20px;
+    }
+    button {
+      margin: 10px;
+      padding: 10px 15px;
+    }
+    .btn {
+      width: 100px;
+      height: 100px;
+      font-size: 18px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .container {
+      height: 100vh;
+      padding: 10px;
+    }
+    .counter {
+      font-size: 20px;
+    }
+    .buttons {
+      margin-top: 10px;
+    }
+    button {
+      margin: 5px;
+      padding: 5px 10px;
+    }
+    .btn {
+      width: 80px;
+      height: 80px;
+      font-size: 14px;
+    }
+  }
