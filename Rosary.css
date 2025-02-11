@@ -53,7 +53,9 @@
     align-items: center;
     -webkit-tap-highlight-color: transparent;
   }
-  
+  .btn, .reset-btn, .home-btn {
+    -webkit-tap-highlight-color: transparent;
+  }
   .reset-btn {
     background-color: #FF0000;
     color: #fff;
