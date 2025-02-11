@@ -16,7 +16,7 @@
     color: #d3a528;
     text-align: center;
     padding: 10px;
-    z-index: 1; /* أضف هذا للاحتفاظ بالرأس في الأعلى */
+    z-index: 1;
   }
   
   .counter {
@@ -51,6 +51,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    -webkit-tap-highlight-color: transparent;
   }
   
   .reset-btn {
@@ -67,7 +68,7 @@
     opacity: 0.8;
   }
   
-  /* إضافة قواعد الوسائط */
+
   
   @media (max-width: 768px) {
     .container {

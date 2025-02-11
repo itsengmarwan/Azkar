@@ -61,6 +61,7 @@ body {
 .nav-btns button {
     width: 100%;
     margin-bottom: 10px;
+    -webkit-tap-highlight-color: transparent;
 }
 
 #next-btn, #prev-btn {
@@ -101,8 +102,6 @@ body {
     color: #d3a528;
     border-radius: 10px;
 }
-
-/* اضافة كود لجعل التطبيق مناسب لكل الاجهزة */
 
 @media only screen and (max-width: 768px) {
     .container {
