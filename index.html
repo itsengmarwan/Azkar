@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" href="LOGO.jpg" />
     <link rel="shortcut icon" type="image/x-icon" href="LOGO.jpg">
+    <link rel="manifest" href="manifest.json">
 </head>
 <body>
     <header class="header">
@@ -48,3 +49,15 @@
     </div>
 </body>
 </html>
+
+<script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js')
+      .then(function(registration) {
+        console.log('Service Worker registered with scope:', registration.scope);
+      })
+      .catch(function(error) {
+        console.log('Service Worker registration failed:', error);
+      });
+    }
+  </script>
