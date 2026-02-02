@@ -1,63 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="ar">
 <head>
+    <meta charset="UTF-8">
     <title>أذكار</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="icon" href="LOGO.jpg" />
-    <link rel="shortcut icon" type="image/x-icon" href="LOGO.jpg">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="manifest" href="manifest.json">
 </head>
 <body>
+    <div class="top-controls">
+        <button class="icon-btn" onclick="toggleTheme()"><i class="fas fa-sun theme-icon"></i></button>
+    </div>
+
     <header class="header">
-        <div class="header-content">
-            <h1 class="header-title">موقع أذكار</h1>
-            <p>تم صنع هذا الموقع بواسطة مروان طارق</p>
-        </div>
+        <h1>موقع أذكار</h1>
+        <p>حصن المسلم اليومي</p>
     </header>
 
-    <br><br><br><br><br><br>
-
-    <div class="content">
-        <h2 style="font-size: 25px; color: #000000;">مرحباً بكم في موقع أذكار</h2>
-     
-        <div class="links">
-            <button class="button" onclick="location.href='Morning.html'"><i class="fas fa-sun"></i> أذكار الصباح </button>
-            <br>
-            <button class="button" onclick="location.href='Evening.html'"><i class="fas fa-moon"></i> أذكار المساء </button>
-            <br>
-            <button class="button" onclick="location.href='After-pray.html'"><i class="fas fa-pray"></i> أذكار بعد الصلاة </button>
-            <br>
-            <button class="button" onclick="location.href='Tasabe7.html'"><i class="fas fa-heart"></i> تسابيح </button>
-            <br>
-            <button class="button" onclick="location.href='Rosary.html'"><i class="fas fa-mosque"></i> السبحة الإلكترونية </button>
-        </div>
-
-        <br>
-
-        <div class="info">
-            <p>هذا الموقع يقدم اذكار الصباح والمساء وما بعد الصلاة وبعض الأدعية المأثورة والسبحة الإلكترونية ايضاً</p>
-        </div>
-
-        <br>
-        
-        <div class="footer">
-            <p>&copy; 2023 جميع الحقوق محفوظة. موقع أذكار.</p>
-        </div>
+    <div class="menu-container">
+        <a href="Morning.html" class="menu-btn"><span>أذكار الصباح</span> <i class="fas fa-sun" style="color: #ff9800;"></i></a>
+        <a href="Evening.html" class="menu-btn"><span>أذكار المساء</span> <i class="fas fa-moon" style="color: #673ab7;"></i></a>
+        <a href="After-pray.html" class="menu-btn"><span>أذكار بعد الصلاة</span> <i class="fas fa-pray" style="color: #4caf50;"></i></a>
+        <a href="Tasabe7.html" class="menu-btn"><span>تسابيح</span> <i class="fas fa-fingerprint" style="color: #e91e63;"></i></a>
+        <a href="Rosary.html" class="menu-btn"><span>السبحة الإلكترونية</span> <i class="fas fa-dharmachakra" style="color: var(--gold);"></i></a>
     </div>
+
+    <div class="footer">
+        <p>بواسطة مروان طارق &copy; 2026</p>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js');
+    </script>
 </body>
 </html>
-
-<script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js')
-      .then(function(registration) {
-        console.log('Service Worker registered with scope:', registration.scope);
-      })
-      .catch(function(error) {
-        console.log('Service Worker registration failed:', error);
-      });
-    }
-</script>

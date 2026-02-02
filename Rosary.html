@@ -1,26 +1,27 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>السبحة الإلكترونية</title>
-  <link rel="stylesheet" href="Rosary.css">
+    <meta charset="UTF-8">
+    <title>السبحة</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body>
-  <div class="container">
-    <div class="header">
-      <h1>السبحة الإلكترونية</h1>
+<body data-page="rosary">
+    <div class="top-controls">
+        <button class="icon-btn" onclick="toggleTheme()"><i class="fas fa-sun theme-icon"></i></button>
+        <a href="index.html" class="icon-btn"><i class="fas fa-home"></i></a>
     </div>
-    <div class="counter">
-      <h2 id="counter">0</h2>
+
+    <header class="header"><h1>السبحة الإلكترونية</h1></header>
+
+    <div class="rosary-container" style="margin-top: 50px;">
+        <div id="rosary-display" style="font-size: 5rem; color: var(--gold); margin-bottom: 20px;">0</div>
+        <div id="rosary-btn" class="counter-btn" style="width: 150px; height: 150px;">
+            <i class="fas fa-fingerprint" style="font-size: 4rem; opacity: 0.5;"></i>
+        </div>
+        <button id="reset-rosary" style="margin-top: 30px; padding: 10px 20px; background: #d32f2f; color: white; border: none; border-radius: 5px; cursor: pointer;">تصفير</button>
     </div>
-    <div class="buttons">
-      <button class="btn" onclick="increment()">سبح</button>
-      <br>
-      <button class="reset-btn" onclick="reset()">إعادة</button>
-      <button class="home-btn" onclick="goHome()">العودة للصفحة الرئيسية</button>
-    </div>
-  </div>
-  <script src="Rosary.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
