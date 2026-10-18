@@ -128,6 +128,8 @@ function renderZikr() {
     const countBtn = document.getElementById('counter-btn');
     const progressBar = document.getElementById('progress-bar');
 
+    if (!contentDiv || !countBtn || !currentList.length || !currentList[currentIndex]) return;
+
     contentDiv.style.opacity = '0';
     setTimeout(() => {
         contentDiv.innerHTML = currentList[currentIndex].text;
@@ -143,7 +145,12 @@ function renderZikr() {
 }
 
 function setupControls() {
-    document.getElementById('counter-btn').addEventListener('click', function() {
+    const counterBtn = document.getElementById('counter-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const prevBtn = document.getElementById('prev-btn');
+    if (!counterBtn || !nextBtn || !prevBtn) return;
+
+    counterBtn.addEventListener('click', function() {
         if (currentCount > 0) {
             currentCount--;
             this.innerText = currentCount;
@@ -159,9 +166,9 @@ function setupControls() {
         }
     });
 
-    document.getElementById('next-btn').addEventListener('click', nextZikr);
+    nextBtn.addEventListener('click', nextZikr);
     
-    document.getElementById('prev-btn').addEventListener('click', () => {
+    prevBtn.addEventListener('click', () => {
         if (currentIndex > 0) {
             currentIndex--;
             currentCount = currentList[currentIndex].count;
@@ -182,10 +189,13 @@ function nextZikr() {
 }
 
 function initRosary() {
-    let rosaryCount = parseInt(localStorage.getItem('rosaryCount') || '0');
+    const storedCount = Number.parseInt(localStorage.getItem('rosaryCount') || '0', 10);
+    let rosaryCount = Number.isFinite(storedCount) && storedCount >= 0 ? storedCount : 0;
     const display = document.getElementById('rosary-display');
     const btn = document.getElementById('rosary-btn');
     const resetBtn = document.getElementById('reset-rosary');
+
+    if (!display || !btn || !resetBtn) return;
 
     display.innerText = rosaryCount;
 
