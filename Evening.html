@@ -14,11 +14,12 @@
         <a href="index.html" class="icon-btn"><i class="fas fa-home"></i></a>
     </div>
 
-    <div class="zikr-card" id="zikr-content"></div>
-    <div id="counter-btn" class="counter-btn">0</div>
+    <div class="zikr-card" id="zikr-content" role="status" aria-live="polite"></div>
+    <button type="button" id="counter-btn" class="counter-btn" aria-label="إنقاص عدد التكرارات">0</button>
     <p style="text-align: center; color: var(--secondary-text);">عدد التكرار</p>
 
     <div class="nav-buttons">
+        <button id="copy-btn" type="button">نسخ الذكر <i class="fas fa-copy"></i></button>
         <button id="next-btn">التالي <i class="fas fa-chevron-left"></i></button>
         <button id="prev-btn"><i class="fas fa-chevron-right"></i> السابق</button>
     </div>

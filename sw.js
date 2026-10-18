@@ -1,4 +1,4 @@
-const CACHE_NAME = 'azkar-pro-v1';
+const CACHE_NAME = 'azkar-pro-v2';
 const ASSETS = [
     './',
     './index.html',
@@ -10,9 +10,7 @@ const ASSETS = [
     './style.css',
     './script.js',
     './manifest.json',
-    './LOGO.jpg',
-    'https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&display=swap',
-    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css'
+    './LOGO.jpg'
 ];
 
 self.addEventListener('install', (e) => {

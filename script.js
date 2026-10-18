@@ -107,17 +107,28 @@ const azkarData = {
 let currentList = [];
 let currentIndex = 0;
 let currentCount = 0;
+let currentPage = '';
+
+function readStorage(key, fallback = null) {
+    try { return localStorage.getItem(key) ?? fallback; } catch (_) { return fallback; }
+}
+
+function writeStorage(key, value) {
+    try { localStorage.setItem(key, value); } catch (_) {}
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     initTheme();
     const pageType = document.body.getAttribute('data-page');
+    currentPage = pageType || '';
 
     if (pageType === 'rosary') {
         initRosary();
     } else if (azkarData[pageType]) {
         currentList = azkarData[pageType];
-        currentIndex = 0;
-        currentCount = currentList[0].count;
+        const savedIndex = Number.parseInt(readStorage(`azkar:${pageType}:index`, '0'), 10);
+        currentIndex = Number.isFinite(savedIndex) ? Math.min(Math.max(savedIndex, 0), currentList.length - 1) : 0;
+        currentCount = currentList[currentIndex].count;
         renderZikr();
         setupControls();
     }
@@ -137,6 +148,7 @@ function renderZikr() {
     }, 150);
 
     countBtn.innerText = currentCount;
+    countBtn.setAttribute('aria-label', `إنقاص عدد التكرارات، المتبقي ${currentCount}`);
 
     if (progressBar) {
         const percent = ((currentIndex + 1) / currentList.length) * 100;
@@ -148,12 +160,14 @@ function setupControls() {
     const counterBtn = document.getElementById('counter-btn');
     const nextBtn = document.getElementById('next-btn');
     const prevBtn = document.getElementById('prev-btn');
+    const copyBtn = document.getElementById('copy-btn');
     if (!counterBtn || !nextBtn || !prevBtn) return;
 
     counterBtn.addEventListener('click', function() {
         if (currentCount > 0) {
             currentCount--;
             this.innerText = currentCount;
+            this.setAttribute('aria-label', `إنقاص عدد التكرارات، المتبقي ${currentCount}`);
             vibrate();
 
             if (currentCount === 0) {
@@ -167,13 +181,21 @@ function setupControls() {
     });
 
     nextBtn.addEventListener('click', nextZikr);
+    copyBtn?.addEventListener('click', copyCurrentZikr);
     
     prevBtn.addEventListener('click', () => {
         if (currentIndex > 0) {
             currentIndex--;
             currentCount = currentList[currentIndex].count;
+            writeStorage(`azkar:${currentPage}:index`, currentIndex);
             renderZikr();
         }
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.target.matches('input, textarea')) return;
+        if (event.key === 'ArrowLeft') nextZikr();
+        if (event.key === 'ArrowRight' && currentIndex > 0) prevBtn.click();
     });
 }
 
@@ -181,15 +203,32 @@ function nextZikr() {
     if (currentIndex < currentList.length - 1) {
         currentIndex++;
         currentCount = currentList[currentIndex].count;
+        writeStorage(`azkar:${currentPage}:index`, currentIndex);
         renderZikr();
     } else {
+        writeStorage(`azkar:${currentPage}:index`, 0);
         alert("تقبل الله! تم الانتهاء.");
         window.location.href = 'index.html';
     }
 }
 
+async function copyCurrentZikr() {
+    const content = document.getElementById('zikr-content');
+    const button = document.getElementById('copy-btn');
+    if (!content || !button) return;
+    try {
+        await navigator.clipboard.writeText(content.innerText.trim());
+        const original = button.innerHTML;
+        button.textContent = 'تم النسخ ✓';
+        setTimeout(() => { button.innerHTML = original; }, 1400);
+    } catch (_) {
+        button.textContent = 'تعذر النسخ';
+        setTimeout(() => { button.textContent = 'نسخ الذكر'; }, 1400);
+    }
+}
+
 function initRosary() {
-    const storedCount = Number.parseInt(localStorage.getItem('rosaryCount') || '0', 10);
+    const storedCount = Number.parseInt(readStorage('rosaryCount', '0'), 10);
     let rosaryCount = Number.isFinite(storedCount) && storedCount >= 0 ? storedCount : 0;
     const display = document.getElementById('rosary-display');
     const btn = document.getElementById('rosary-btn');
@@ -202,7 +241,7 @@ function initRosary() {
     btn.addEventListener('click', () => {
         rosaryCount++;
         display.innerText = rosaryCount;
-        localStorage.setItem('rosaryCount', rosaryCount);
+        writeStorage('rosaryCount', rosaryCount);
         vibrate();
     });
 
@@ -210,13 +249,13 @@ function initRosary() {
         if (confirm('تصفير العداد؟')) {
             rosaryCount = 0;
             display.innerText = rosaryCount;
-            localStorage.setItem('rosaryCount', 0);
+            writeStorage('rosaryCount', 0);
         }
     });
 }
 
 function initTheme() {
-    const savedTheme = localStorage.getItem('theme') || 'dark';
+    const savedTheme = readStorage('theme', 'dark');
     document.documentElement.setAttribute('data-theme', savedTheme);
     updateThemeIcon(savedTheme);
 }
@@ -225,7 +264,7 @@ function toggleTheme() {
     const current = document.documentElement.getAttribute('data-theme');
     const newTheme = current === 'light' ? 'dark' : 'light';
     document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
+    writeStorage('theme', newTheme);
     updateThemeIcon(newTheme);
 }
 

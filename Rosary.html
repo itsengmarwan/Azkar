@@ -9,7 +9,7 @@
 </head>
 <body data-page="rosary">
     <div class="top-controls">
-        <button class="icon-btn" onclick="toggleTheme()"><i class="fas fa-sun theme-icon"></i></button>
+        <button class="icon-btn" type="button" aria-label="تبديل الوضع الليلي" onclick="toggleTheme()"><i class="fas fa-sun theme-icon"></i></button>
         <a href="index.html" class="icon-btn"><i class="fas fa-home"></i></a>
     </div>
 
@@ -17,10 +17,10 @@
 
     <div class="rosary-container" style="margin-top: 50px;">
         <div id="rosary-display" style="font-size: 5rem; color: var(--gold); margin-bottom: 20px;">0</div>
-        <div id="rosary-btn" class="counter-btn" style="width: 150px; height: 150px;">
+        <button type="button" id="rosary-btn" class="counter-btn" aria-label="زيادة عداد السبحة" style="width: 150px; height: 150px;">
             <i class="fas fa-fingerprint" style="font-size: 4rem; opacity: 0.5;"></i>
-        </div>
-        <button id="reset-rosary" style="margin-top: 30px; padding: 10px 20px; background: #d32f2f; color: white; border: none; border-radius: 5px; cursor: pointer;">تصفير</button>
+        </button>
+        <button id="reset-rosary" type="button" style="margin-top: 30px; padding: 10px 20px; background: #d32f2f; color: white; border: none; border-radius: 5px; cursor: pointer;">تصفير</button>
     </div>
     <script src="script.js"></script>
 </body>
